@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, Instagram, ChevronDown, Menu, X, ExternalLink, Code, Palette, Smartphone, Globe } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Instagram, ChevronDown, Menu, X, ExternalLink, Code, Palette, Smartphone, Globe, FileTextIcon } from 'lucide-react';
 import profileImg from "../assets/profile.jpg"
 import teamworkImg from "../assets/teamwork.jpg";
 import techfoImg from "../assets/techfo.png";
 import healtistractImg from "../assets/healtistract.png";
 import brailliantImg from "../assets/brailliant.png";
+import eagleeyeImg from "../assets/eagleeye.png";
+
+// Portfolio Component dari react untuk menampilkan halaman portofolio
 const Portfolio = () => {
+  // Penggunaan useState untuk open/close menu dan active section.
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
@@ -35,10 +39,11 @@ const Portfolio = () => {
   const skills = [
     { name: 'React.js', level: 80, icon: <Code className="w-6 h-6" /> },
     { name: 'HTML', level: 80, icon: <Code className="w-6 h-6" /> },
+    { name: 'PHP', level: 80, icon: <Code className="w-6 h-6" /> },
+    { name: 'Tailwind CSS', level: 70, icon: <Code className="w-6 h-6" /> },
     { name: 'UI/UX Design', level: 90, icon: <Palette className="w-6 h-6" /> },
-    { name: 'Mobile Development', level: 50, icon: <Smartphone className="w-6 h-6" /> },
     { name: 'Web Development', level: 80, icon: <Globe className="w-6 h-6" /> },
-    { name: 'Tailwind CSS', level: 70, icon: <Code className="w-6 h-6" /> }
+    { name: 'Microsoft Office', level: 75, icon: <FileTextIcon className="w-6 h-6" /> }
   ];
 
   const projects = [
@@ -63,16 +68,23 @@ const Portfolio = () => {
       image: brailliantImg,
       tech: ['Figma'],
       live: 'https://bit.ly/AplikasiBrailliant'
+    },
+    {
+      title: 'Project Management Platform Design',
+      description: 'Web based application designed to help users manage projects efficiently, from scheduling arrangements to task and job description assignments.',
+      image: eagleeyeImg,
+      tech: ['Figma'],
+      live: 'https://www.figma.com/design/INvSGLnYrKDknrZTJtJQFO/KADA-2025?node-id=19-2&t=1aAvayw2ZEWjL9SQ-1'
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0B1C47] via-sky-400 to-[#0B1C47]">
+    <div className="min-h-screen bg-gradient-to-br from-[#8dd9ff] via-[#3076da] to-[#82d5ff]">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-black/20 backdrop-blur-lg border-b border-white/10 z-50">
+      <nav className="fixed top-0 w-full bg-black/50 backdrop-blur-lg border-b border-white/10 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <div className="text-2xl font-bold bg-gradient-to-r from-sky-300 to-sky-50 bg-clip-text text-transparent">
+            <div className="text-2xl font-bold bg-white bg-clip-text text-transparent">
               Elmira Ardelia
             </div>
 
@@ -82,8 +94,8 @@ const Portfolio = () => {
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
-                  className={`capitalize transition-colors duration-300 hover:text-sky-300 ${activeSection === item ? 'text-sky-300' : 'text-white'
-                    }`}
+                  className={`capitalize transition-colors duration-300 hover:text-[#79deff] ${activeSection === item ? 'text-[#79deff] font-bold border-b-3 border-[#79deff]' : 'text-white'}`}
+                  style={{ paddingBottom: '2px' }}
                 >
                   {item}
                 </button>
@@ -102,13 +114,13 @@ const Portfolio = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-black/90 backdrop-blur-lg">
+          <div className="md:hidden bg-black/80">
             <div className="px-4 py-2 space-y-2">
               {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
-                  className="block w-full text-left capitalize py-2 text-white hover:text-sky-300 transition-colors"
+                  className={`block w-full text-left capitalize py-2 transition-colors ${activeSection === item ? 'text-[#81f7ff] font-bold' : 'text-white'} hover:text-[#81f7ff]`}
                 >
                   {item}
                 </button>
@@ -123,12 +135,12 @@ const Portfolio = () => {
         <div className="text-center">
           <div className="relative mb-8">
             <div className="relative w-48 h-48 mx-auto">
-              {/* Efek kelap-kelip di belakang */}
-              <div className="absolute inset-0 rounded-full bg-[#4a4a49] blur-2xl opacity-60 animate-pulse z-0" />
+              {/* Efek kelap-kelip di belakang (lingkaran)*/}
+              <div className="absolute inset-0 rounded-full bg-[#4d4d4d] blur-2xl opacity-60 animate-pulse z-0" />
 
-              {/* Lapisan foto profil di atas efek */}
+              {/* border foto */}
               <div className="relative z-10 w-full h-full rounded-full bg-white  p-1">
-                <div className="w-full h-full rounded-full bg-slate-900 overflow-hidden">
+                <div className="w-full h-full rounded-full bg-white overflow-hidden">
                   <img
                     src={profileImg}
                     alt="Profile"
@@ -137,30 +149,31 @@ const Portfolio = () => {
                 </div>
               </div>
             </div>
-            <div className="absolute inset-0 rounded-full bg-gray-300 blur-xl opacity-30 animate-pulse"></div>
+            {/* Efek kelap-kelip di belakang (oval)*/}
+            <div className="absolute inset-0 rounded-full bg-[#0B1C47] blur-xl opacity-30 animate-pulse"></div>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
+          <h1 className="text-5xl md:text-7xl text-white font-bold mb-4">
             Elmira
-            <span className="bg-gradient-to-r from-[#0B1C47] to-[#5490c2] bg-clip-text text-transparent">
-              {" "}Ardelia
+            <span className="bg-[#0B1C47] bg-clip-text text-transparent">
+              {" "} Ardelia
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-white mb-8 max-w-2xl mx-auto">
             Creative Developer & Designer passionate about building beautiful digital experiences
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => scrollToSection('projects')}
-              className="px-8 py-3 bg-gradient-to-r from-[#0B1C47] via-[#5490c2] to-[#0B1C47] text-white rounded-full hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105"
+              className="px-8 py-3 bg-[#0d2152] text-white rounded-full hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 transform hover:scale-105"
             >
               View My Work
             </button>
             <button
               onClick={() => scrollToSection('contact')}
-              className="px-8 py-3 border border-[#0B1C47] text-[#0B1C47] rounded-full hover:bg-[#0B1C47] hover:text-white transition-all duration-300"
+              className="px-8 py-3 border-3 border-[#0d2152] text-[#0d2152] rounded-full hover:bg-[#0d2152] hover:text-white transition-all duration-300"
             >
               Get In Touch
             </button>
@@ -176,18 +189,18 @@ const Portfolio = () => {
       <section id="about" className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-16">
-            About <span className="bg-gradient-to-r from-[#0B1C47] to-[#5490c2] bg-clip-text text-transparent">Me</span>
+            About <span className="bg-[#0B1C47] bg-clip-text text-transparent">Me</span>
           </h2>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <p className="text-lg text-gray-300 leading-relaxed">
+              <p className="text-lg text-white leading-relaxed">
                 Hello! I'm Elmira Ardelia, a passionate developer and designer with a love for creating
                 innovative digital solutions. I specialize in modern web technologies and have a keen
                 eye for user experience design.
               </p>
 
-              <p className="text-lg text-gray-300 leading-relaxed">
+              <p className="text-lg text-white leading-relaxed">
                 My journey in tech started with curiosity and has evolved into a career focused on
                 building applications that make a difference. I enjoy working on projects that
                 challenge me to grow and learn new technologies.
@@ -201,7 +214,7 @@ const Portfolio = () => {
                   Creative Thinker
                 </span>
                 <span className="px-4 py-2 bg-[#396284] text-white rounded-full text-sm">
-                  Team Player
+                  Adaptive Learner
                 </span>
               </div>
             </div>
@@ -227,22 +240,22 @@ const Portfolio = () => {
       <section id="skills" className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-16">
-            My <span className="bg-gradient-to-r from-[#0B1C47] to-[#5490c2] bg-clip-text text-transparent">Skills</span>
+            My <span className="bg-[#0B1C47] bg-clip-text text-transparent">Skills</span>
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {skills.map((skill, index) => (
-              <div key={index} className="bg-gray-600/25 backdrop-blur-sm rounded-xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div key={index} className="bg-gray-700/25 backdrop-blur-sm rounded-xl p-6 hover:bg-black/25 transition-all duration-300">
                 <div className="flex items-center mb-4">
-                  <div className="text-[#0B1C47] mr-3">
+                  <div className="text-white mr-3">
                     {skill.icon}
                   </div>
                   <h3 className="text-xl font-semibold text-white">{skill.name}</h3>
                 </div>
 
-                <div className="w-full bg-gray-300 rounded-full h-2 mb-2">
+                <div className="w-full bg-gray-100 rounded-full h-2 mb-2">
                   <div
-                    className="bg-gradient-to-r from-[#0B1C47] to-[#5490c2]  h-2 rounded-full transition-all duration-1000"
+                    className="bg-[#193376] h-2 rounded-full transition-all duration-1000"
                     style={{ width: `${skill.level}%` }}
                   ></div>
                 </div>
@@ -258,13 +271,13 @@ const Portfolio = () => {
       <section id="projects" className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-16">
-            My <span className="bg-gradient-to-r from-[#0B1C47] to-[#5490c2] bg-clip-text text-transparent">Projects</span>
+            My <span className="bg-[#0B1C47] bg-clip-text text-transparent">Projects</span>
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <div key={index} className="bg-white/15 backdrop-blur-sm rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300">
-                <div className="h-48 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
+              <div key={index} className="bg-white/25 backdrop-blur-sm rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300">
+                <div className="h-48 bg-purple-500/20 flex items-center justify-center">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -280,7 +293,7 @@ const Portfolio = () => {
                     {project.tech.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-3 py-1 bg-[#0B1C47] text-sky-300 rounded-full text-sm"
+                        className="px-3 py-1 bg-[#0B1C47] text-white rounded-full text-sm"
                       >
                         {tech}
                       </span>
@@ -290,14 +303,14 @@ const Portfolio = () => {
                   <div className="flex gap-4">
                     <a
                       href={project.github}
-                      className="flex items-center text-gray-200 hover:text-sky-300 transition-colors"
+                      className="flex items-center text-white hover:text-[#0B1C47] transition-colors"
                     >
                       <Github className="w-4 h-4 mr-1" />
                       Code
                     </a>
                     <a
                       href={project.live}
-                      className="flex items-center text-gray-200 hover:text-sky-300 transition-colors"
+                      className="flex items-center text-white hover:text-[#0B1C47] transition-colors"
                     >
                       <ExternalLink className="w-4 h-4 mr-1" />
                       Live Demo
@@ -314,7 +327,7 @@ const Portfolio = () => {
       <section id="contact" className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-16">
-            Get In <span className="bg-gradient-to-r from-[#0B1C47] to-[#5490c2] bg-clip-text text-transparent">Touch</span>
+            Get In <span className="bg-[#0B1C47]  bg-clip-text text-transparent">Touch</span>
           </h2>
 
           <div className="grid md:grid-cols-2 gap-12">
@@ -343,44 +356,44 @@ const Portfolio = () => {
               </div>
 
               <div className="flex space-x-6">
-                <a href="https://github.com/elmiraa89" className="text-gray-200 hover:text-sky-300 transition-colors">
+                <a href="https://github.com/elmiraa89" className="text-gray-200 hover:text-[#0B1C47] transition-colors">
                   <Github className="w-6 h-6" />
                 </a>
-                <a href="https://www.linkedin.com/in/elmira-ardelia-81101b242/" className="text-gray-200 hover:text-sky-300 transition-colors">
+                <a href="https://www.linkedin.com/in/elmira-ardelia-81101b242/" className="text-gray-200 hover:text-[#0B1C47] transition-colors">
                   <Linkedin className="w-6 h-6" />
                 </a>
-                <a href="https://www.instagram.com/elmirardelia/" className="text-gray-200 hover:text-sky-300 transition-colors">
+                <a href="https://www.instagram.com/elmirardelia/" className="text-gray-200 hover:text-[#0B1C47] transition-colors">
                   <Instagram className="w-6 h-6" />
                 </a>
               </div>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8">
+            <div className="bg-white/25 backdrop-blur-sm rounded-xl p-8">
               <div className="space-y-6">
                 <div>
                   <input
                     type="text"
                     placeholder="Your Name"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-sky-300 transition-colors"
+                    className="w-full px-4 py-3 bg-white/10 border border-black/15 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-sky-600 transition-colors"
                   />
                 </div>
                 <div>
                   <input
                     type="email"
                     placeholder="Your Email"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-sky-300 transition-colors"
+                    className="w-full px-4 py-3 bg-white/10 border border-black/15 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-sky-600 transition-colors"
                   />
                 </div>
                 <div>
                   <textarea
                     rows="5"
                     placeholder="Your Message"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-sky-300 transition-colors resize-none"
+                    className="w-full px-4 py-3 bg-white/10 border border-black/15 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:border-sky-600 transition-colors resize-none"
                   ></textarea>
                 </div>
                 <button
                   onClick={() => alert('Message sent! (This is a demo)')}
-                  className="w-full px-8 py-3 bg-gradient-to-r from-[#0B1C47] via-sky-300 to-[#0B1C47] text-white rounded-lg hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105"
+                  className="w-full px-8 py-3 bg-[#0d2152] text-white rounded-lg hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105"
                 >
                   Send Message
                 </button>
