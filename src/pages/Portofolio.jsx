@@ -6,6 +6,8 @@ import techfoImg from "../assets/techfo.png";
 import healtistractImg from "../assets/healtistract.png";
 import brailliantImg from "../assets/brailliant.png";
 import eagleeyeImg from "../assets/eagleeye.png";
+import jdihImg from "../assets/jdih.png";
+import kkImg from "../assets/kk.png";
 
 // Portfolio Component dari react untuk menampilkan halaman portofolio
 const Portfolio = () => {
@@ -37,7 +39,7 @@ const Portfolio = () => {
   };
 
   const skills = [
-    { name: 'React.js', level: 80, icon: <Code className="w-6 h-6" /> },
+    { name: 'JavaScript', level: 80, icon: <Code className="w-6 h-6" /> },
     { name: 'HTML', level: 80, icon: <Code className="w-6 h-6" /> },
     { name: 'PHP', level: 80, icon: <Code className="w-6 h-6" /> },
     { name: 'Tailwind CSS', level: 70, icon: <Code className="w-6 h-6" /> },
@@ -75,6 +77,20 @@ const Portfolio = () => {
       image: eagleeyeImg,
       tech: ['Figma'],
       live: 'https://www.figma.com/design/INvSGLnYrKDknrZTJtJQFO/KADA-2025?node-id=19-2&t=1aAvayw2ZEWjL9SQ-1'
+    },
+    {
+      title: 'Public Legal Information Platform Design (JDIH BRIN)',
+      description: 'Mobile based application designed to support public services and transparency by providing access to legal documentation and information for various BRIN-related needs.',
+      image: jdihImg,
+      tech: ['Figma'],
+      live: 'https://www.figma.com/design/NgDLLOof01oz7e5JNPTP3o/Design-Mobile-JDIH-BRIN?node-id=1-2&p=f&t=sZlfKKgakBRWr828-0'
+    },
+    {
+      title: 'Conflict of Interest Management Platform',
+      description: 'Web based application developed to facilitate conflict of interest management for BRIN employees, ensuring integrity, transparency, and accountability in public service delivery.',
+      image: kkImg,
+      tech: ['Figma', 'Laravel', 'PostgreSQL'],
+      live: 'https://www.figma.com/design/CzI9tFjnCaZxjh1HJfTK0E/KONFLIK-KEPENTINGAN?node-id=29-44&t=1zQQcdxa46YOTZoK-0'
     }
   ];
 
